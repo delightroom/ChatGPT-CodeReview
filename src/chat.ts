@@ -43,6 +43,12 @@ export class Chat {
     const res = await this.chatAPI.sendMessage(prompt);
 
     console.timeEnd('code-review cost');
-    return res.text;
+    const responseText = res.text;
+
+	if (process.env.IGNORE_REVIEW_TOKEN && responseText.includes(process.env.IGNORE_REVIEW_TOKEN)) {
+		return '';
+	}
+
+	return responseText;
   };
 }
