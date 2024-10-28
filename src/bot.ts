@@ -129,6 +129,7 @@ export const robot = (app: Probot) => {
         }
         try {
           const res = await chat?.codeReview(patch);
+		  console.log('res', res);
 
           if (!!res) {
             await context.octokit.pulls.createReviewComment({

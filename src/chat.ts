@@ -46,9 +46,11 @@ export class Chat {
     const responseText = res.text;
 
 	if (process.env.IGNORE_REVIEW_TOKEN && responseText.includes(process.env.IGNORE_REVIEW_TOKEN)) {
+		console.log('ignore review', process.env.IGNORE_REVIEW_TOKEN);
 		return '';
 	}
 
+	console.log('responseText', responseText);
 	return responseText;
   };
 }
